@@ -1,4 +1,18 @@
 
-<%= link_to "Sign Up", new_user_registration_path %>
-<%= link_to "Sign In", new_user_session_path %>
-<%= link_to "Sign Out", destroy_user_session_path, method: :delete%>
+
+<% if current_user %>
+    <%= link_to "Make Party", new_event_path %>
+    <%= link_to "Sign Out", destroy_user_session_path, method: :delete%>
+
+<% else %>
+    <%= link_to "Sign Up", new_user_registration_path %>
+    <%= link_to "Sign In", new_user_session_path %>
+
+<% end %>
+
+<div class="party-div">
+<% @events.each do |e| %>
+ <h2> <%= link_to e.name, event_path(e) %> </h2>
+ <% end %>
+ </div>
+

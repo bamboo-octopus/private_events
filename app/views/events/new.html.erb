@@ -1,0 +1,8 @@
+<h2>Make a new party</h2>
+
+<%= form_with model: @event do |f|%>
+    <%= f.label :name %> <br >
+    <%= f.text_field :name%> <br > <br >
+    <%= f.submit %>
+
+<% end %>
