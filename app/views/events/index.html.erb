@@ -1,6 +1,7 @@
 
 
 <% if current_user %>
+    <%= link_to current_user.email, user_path(current_user) %>
     <%= link_to "Make Party", new_event_path %>
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete%>
 
