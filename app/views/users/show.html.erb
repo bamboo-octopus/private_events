@@ -1,3 +1,20 @@
-<%= @user.email %>
+
 
 <%= link_to "Home", root_path %>
+
+<h1> <%= @user.email %> </h1>
+<hr>
+
+<h1> Created Events </h1>
+
+<% @events.each do |e| %>
+
+    <h2> <%= link_to e.name, event_path(e) %> </h2>
+
+<% end %>
+<hr>
+
+<% @events_invited_to.each do |e| %>
+    <h3> <%= link_to e.event.name, event_path(e.event) %> <h3>
+<% end %>
+

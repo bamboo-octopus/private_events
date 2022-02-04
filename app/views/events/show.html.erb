@@ -1,3 +1,18 @@
 <h1> <%= @event.name %> </h1>
+<h2> <%= link_to @event.creator.email, user_path(@event.creator) %> </h2>
+
+
+<% if current_user == @event.creator %>
+    <%= link_to "Invite People", new_attended_event_path(:event_id => @event.id) %>
+<% end %>
+
+
+<div>
+ <h2> invited </h2>
+ <hr>
+<% @event.attended_events.each do |a| %>
+    <h3> <%= link_to a.attendee.email, user_path(a.attendee) %> </h3>
+<% end %>
+<div>
 
 <%= link_to "Home", root_path %>

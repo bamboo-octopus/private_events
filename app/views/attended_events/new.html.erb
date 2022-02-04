@@ -1,0 +1,20 @@
+<h1> <%= @user.email %> </h1> <br > 
+<h2> <%= @event.name %> <%= @event.id %> </h2>  <br ><br >
+
+<% @users.each do |u| %>
+    <% if u != @user %>
+        <h3> <%= u.email %> <%= u.id %> </h3>
+    <% end %>
+<% end %>
+
+<%= form_with model: @attended_event do |f| %>
+    <%= f.label :attendee_id %>
+    <%= f.text_field :attendee_id %> <br ><br >
+
+    <%= f.label :event_id %>
+    <%= f.text_field :event_id %>
+    
+    <%= f.submit %>
+<% end %>
+    
+<%= link_to "Home", root_path %>
