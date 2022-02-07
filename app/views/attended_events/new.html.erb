@@ -1,20 +1,40 @@
-<h1> <%= @user.email %> </h1> <br > 
-<h2> <%= @event.name %> <%= @event.id %> </h2>  <br ><br >
+<div class="logo-header-main">
+  <h1>Bark Party</h1>
+</div>
 
-<% @users.each do |u| %>
-    <% if u != @user %>
-        <h3> <%= u.email %> <%= u.id %> </h3>
+<div class="main-div">
+
+    <div class="dashboard-div">
+    <h1> <%= @user.email %> </h1>
+        <h2> <%= link_to "Home", root_path %> </h2>
+    </div>
+
+    <div class="party-div">
+
+
+ <br > 
+    <h1> <%= @event.name %> </h1> <br >
+
+    <% @users.each do |u| %>
+        <% if u != @user && u.attended_events.include?(@event) == false %>
+            <%= form_with model: @attended_event do |f|%>
+                <%= f.label u.username %>
+                <%= f.hidden_field :event_id, value: @event.id %>
+                <%= f.hidden_field :attendee_id, value: u.id %>
+                <%= f.submit "Invite", class:"invite-button" %>
+            <% end %>
+            <br>
+
+        <% end %>
+
     <% end %>
-<% end %>
 
-<%= form_with model: @attended_event do |f| %>
-    <%= f.label :attendee_id %>
-    <%= f.text_field :attendee_id %> <br ><br >
+    </div>
 
-    <%= f.label :event_id %>
-    <%= f.text_field :event_id %>
+
+
+    <div class="invited-to-div" style="border:none"></div>
+
     
-    <%= f.submit %>
-<% end %>
-    
-<%= link_to "Home", root_path %>
+
+</div>

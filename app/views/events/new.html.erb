@@ -1,10 +1,33 @@
-<h2>Make a new party</h2>
+<div class="logo-header-main">
+    <h1>Bark Party</h1>
+</div>
 
-<%= form_with model: @event do |f|%>
-    <%= f.label :name %> <br >
-    <%= f.text_field :name%> <br > <br >
-    <%= f.submit %>
+<div class="main-div">
 
-<% end %>
+    <div class="dashboard-div">
+        <h1> <%= current_user.username %> </h1>
+        <h2> <%= link_to "Home", root_path %> </h2>
 
-<%= link_to "Cancel", root_path %>
+
+
+    </div>
+
+    <div class="party-div">
+
+        <h1>Make a new party</h1>
+        <br >
+
+        <%= form_with model: @event do |f|%>
+            <%= f.label :name %> <br >
+            <%= f.text_field :name, class:"event-name-field"%> <br > <br >
+            <%= f.submit %>
+
+        <% end %>
+        <br >
+        <%= link_to "Cancel", root_path %>
+    </div>
+
+    <div class="invited-to-div">
+    </div>
+
+</div>

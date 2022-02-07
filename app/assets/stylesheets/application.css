@@ -4,11 +4,73 @@
 }
 
 body {
-    padding: 1rem;
+    
 }
 
 .party-div {
     border: solid 2px black;
-    width: 30%;
+    width: 37%;
     padding: 1rem;
+    text-align: center;
+    
+}
+
+.main-div {
+    padding: .5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-evenly;
+}
+
+.logo-header-main {
+    padding: .2rem .5rem;
+    background-color: rgb(135, 135, 228);
+}
+
+.dashboard-div {
+    border: solid 2px black;
+    padding: 1rem;
+    width: 22%;
+    height: 30%;
+    text-align: center;
+}
+
+.signed-in-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.party-div-card {
+    border: solid 2px black;
+    padding: 1rem;
+
+}
+
+.party-div-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.invited-to-div {
+    border: 2px solid black;
+    width: 33%;
+    text-align: center;
+    padding: 1rem;
+}
+
+.event-name-field {
+    padding: .5rem;
+    font-size: 16px;
+}
+
+.invite-button {
+    padding: .2rem .5rem;
 }

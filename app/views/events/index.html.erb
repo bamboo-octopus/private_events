@@ -1,19 +1,55 @@
+<div class="logo-header-main">
+    <h1>Bark Party</h1>
+</div>
+
+<div class="main-div">
+
+    <div class="dashboard-div">
+        <h1>Dashboard</h1> <hr>
+        <% if current_user %>
+            <div class="user-name-div">
+            
+                <h2>Signed In As:  <%= link_to current_user.username, user_path(current_user) %> </h2>
+            </div>
+            
+            <br >
+            <br >
+
+            <div class="dashboard-footer">
+                <h2> <%= link_to "Make Party", new_event_path %> </h2>
+                <h2> <%= link_to "Sign Out", destroy_user_session_path, method: :delete%> </h2>
+            </div>
+        <% else %>
+
+            <br >
+            <br >
+
+            <div class="dashboard-footer">
+                <h2> <%= link_to "Sign Up", new_user_registration_path %> </h2>
+                <h2> <%= link_to "Sign In", new_user_session_path %> </h2>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="party-div">
+        <h1>Recent Parties</h1> 
 
 
-<% if current_user %>
-    <%= link_to current_user.email, user_path(current_user) %>
-    <%= link_to "Make Party", new_event_path %>
-    <%= link_to "Sign Out", destroy_user_session_path, method: :delete%>
 
-<% else %>
-    <%= link_to "Sign Up", new_user_registration_path %>
-    <%= link_to "Sign In", new_user_session_path %>
+        <% @events.each do |e| %>
+            <div class="party-div-card">
+                <h2> <%= link_to e.name, event_path(e) %> </h2>
+                <h2> <%= link_to e.creator.username, user_path(e.creator) %>
+            </div>
+            <br >
+        <% end %>
+        
 
-<% end %>
 
-<div class="party-div">
-<% @events.each do |e| %>
- <h2> <%= link_to e.name, event_path(e) %> </h2>
- <% end %>
- </div>
 
+    </div>
+
+    <div class="invited-to-div">
+    </div>
+
+</div>
