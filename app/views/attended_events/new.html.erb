@@ -16,13 +16,14 @@
     <h1> <%= @event.name %> </h1> <br >
 
     <% @users.each do |u| %>
-        <% if u != @user && u.attended_events.include?(@event) == false %>
+        <% if u != @user && @attendees_array.include?(u.id) == false %>
             <%= form_with model: @attended_event do |f|%>
                 <%= f.label u.username %>
                 <%= f.hidden_field :event_id, value: @event.id %>
                 <%= f.hidden_field :attendee_id, value: u.id %>
                 <%= f.submit "Invite", class:"invite-button" %>
             <% end %>
+            
             <br>
 
         <% end %>
@@ -33,8 +34,16 @@
 
 
 
-    <div class="invited-to-div" style="border:none"></div>
+    <div class="invited-to-div">
+        <h1>People Invited</h1>
+        <% @attendees.each do |a| %>
+            <h2> <%= a.attendee.username %> </h2>
+        <% end %>
+
+
+    </div>
 
     
 
 </div>
+

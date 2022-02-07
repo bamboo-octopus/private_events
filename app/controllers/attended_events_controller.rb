@@ -5,6 +5,16 @@ class AttendedEventsController < ApplicationController
         @users = User.all
         @event = Event.find(params[:event_id])
         @attended_event = AttendedEvent.new(event_id: params[:event_id])
+
+        @attendees = AttendedEvent.where(event_id: @event.id)
+        @attendees_array = []
+        @attendees.each do |a|
+
+            @attendees_array.push(a.attendee_id)
+
+        end
+        @attendees_array
+
     end
 
     def create

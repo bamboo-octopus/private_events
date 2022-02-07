@@ -46,10 +46,7 @@
              
 
             <br >
-            <h2> Guests Invited </h2>
-            <% @event.attended_events.each do |a| %>
-                <h3> <%= link_to a.attendee.email, user_path(a.attendee) %> </h3>
-            <% end %>
+            
 
             <% if current_user == @event.creator %>
                 <%= link_to "Invite People", new_attended_event_path(:event_id => @event.id) %>
@@ -62,5 +59,9 @@
 
     </div>
 
-    <div class="invited-to-div" style="border:none">
+    <div class="invited-to-div">
+        <h1> Guests Invited </h1>
+            <% @event.attended_events.each do |a| %>
+                <h2> <%= link_to a.attendee.username, user_path(a.attendee) %> </h2>
+            <% end %>
         </div>
